@@ -15,3 +15,14 @@ func (tm *TaskManager) AaddTask(title, description string){
 	tm.tasks = append(tm.tasks, task)
 	fmt.Println("добавил задачу")
 }
+
+func (tm *TaskManager) CompleteTask(id int) error{
+	for _, task := range tm.tasks{
+		if task.ID == id{
+			task.Complete()
+			fmt.Println("задача выполнена")
+			return nil
+		}
+	}
+	return fmt.Errorf("такой задачи нету")
+}
