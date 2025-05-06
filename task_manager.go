@@ -26,3 +26,14 @@ func (tm *TaskManager) CompleteTask(id int) error{
 	}
 	return fmt.Errorf("такой задачи нету")
 }
+
+func (tm *TaskManager) ListTasks(){
+	if len(tm.tasks) == 0{
+		fmt.Println("задач нету")
+		return
+	}
+	fmt.Print("Список задач")
+	for _, task := range tm.tasks{
+		fmt.Println(task)
+	}
+}
