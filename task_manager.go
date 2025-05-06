@@ -37,3 +37,14 @@ func (tm *TaskManager) ListTasks(){
 		fmt.Println(task)
 	}
 }
+
+func (tm *TaskManager) DeletTask(id int) error{
+	for i, task := range tm.tasks{
+		if task.ID == id{
+			tm.tasks = append(tm.tasks[:i], tm.tasks[i+1:]...)
+			fmt.Println("задача удалена")
+			return nil
+		}
+	}
+	return fmt.Errorf("задача не найдена", id)
+}
